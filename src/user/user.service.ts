@@ -20,22 +20,28 @@ export class UserService {
         
     }
     create(createUserDto:CreateUserDto){
-        return createUserDto
+        return this.userRepository.save(createUserDto)
     }
 
-    update(updateUserDto:UpdateUserDto, userid:Number){
-        return{
-            Body:updateUserDto,
-            Param : userid
-         }
+    update(updateUserDto:UpdateUserDto, userid:number){
+        // return{
+        //     Body:updateUserDto,
+        //     Param : userid
+        //  }
+        return this.userRepository.update(userid,updateUserDto)
     }
 
-    delete(userid:Number){
+    delete(userid:number){
        // const  p = stringify(param)
-        return `User deleted with id  ${userid}`
+        //return `User deleted with id  ${userid}`
+        return this.userRepository.delete(userid)
     }
 
-    getUser(userid:Number){
-        return `User with id ${userid}`
+    getUser(id:number){
+        return this.userRepository.findOne({where:{id}})
+    }
+
+    findByEmail(email:string){
+        return this.userRepository.findOne({where:{email}})
     }
 }

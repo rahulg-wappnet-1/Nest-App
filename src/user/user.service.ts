@@ -16,19 +16,19 @@ export class UserService {
         return createUserDto
     }
 
-    update(updateUserDto:UpdateUserDto, param:Number){
+    update(updateUserDto:UpdateUserDto, userid:Number){
         return{
             Body:updateUserDto,
-            Param : param
-        }
+            Param : userid
+         }
     }
 
-    delete(param:Number){
+    delete(userid:Number){
        // const  p = stringify(param)
-        return `User deleted with id  ${param}`
+        return `User deleted with id  ${userid}`
     }
 
-    getUser(param:Number){
-        return `User with id ${param}`
+    getUser(userid:Number){
+        return `User with id ${userid}`
     }
 }
